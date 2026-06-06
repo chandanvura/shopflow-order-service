@@ -8,27 +8,18 @@ const orderItemSchema = new mongoose.Schema({
 });
 
 const orderSchema = new mongoose.Schema({
-  userId: {
-    type: String,
-    required: true
-  },
-  userEmail: {
-    type: String,
-    required: true
-  },
+  userId: { type: String, required: true },
+  userEmail: { type: String, required: true },
   items: [orderItemSchema],
-  totalAmount: {
-    type: Number,
-    required: true
-  },
+  totalAmount: { type: Number, required: true },
   status: {
     type: String,
-    enum: ['pending', 'processing', 'paid', 'shipped', 'delivered', 'cancelled'],
+    enum: ['pending','processing','paid','shipped','delivered','cancelled'],
     default: 'pending'
   },
   paymentStatus: {
     type: String,
-    enum: ['pending', 'processing', 'completed', 'failed'],
+    enum: ['pending','processing','completed','failed'],
     default: 'pending'
   },
   shippingAddress: {
@@ -37,10 +28,7 @@ const orderSchema = new mongoose.Schema({
     country: String,
     zipCode: String
   },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  }
+  createdAt: { type: Date, default: Date.now }
 });
 
 module.exports = mongoose.model('Order', orderSchema);
